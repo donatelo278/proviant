@@ -8,4 +8,5 @@
 /var/
 /vendor/
 /.osp/
+/.idea/
 ###< symfony/framework-bundle ###
