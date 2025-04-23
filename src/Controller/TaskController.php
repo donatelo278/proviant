@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class TaskController extends AbstractController
 {
     // Создание задачи с валидацией
-    #[Route('/tasks', methods: ['POST'])]
+    #[Route('/api/tasks', methods: ['POST'])]
     public function create(
         Request $request,
         EntityManagerInterface $em,
@@ -44,7 +44,7 @@ class TaskController extends AbstractController
     }
 
     // Получение списка задач (без изменений)
-    #[Route('/tasks', methods: ['GET'])]
+    #[Route('/api/tasks', methods: ['GET'])]
     public function index(EntityManagerInterface $em): JsonResponse
     {
         $tasks = $em->getRepository(Task::class)->findAll();
@@ -54,7 +54,7 @@ class TaskController extends AbstractController
     }
 
     // Обновление задачи с валидацией
-    #[Route('/tasks/{id}', methods: ['PUT'])]
+    #[Route('/api/tasks/{id}', methods: ['PUT'])]
     public function update(
         $id,
         Request $request,
@@ -95,7 +95,7 @@ class TaskController extends AbstractController
     }
 
     // Удаление задачи (без изменений)
-    #[Route('/tasks/{id}', methods: ['DELETE'])]
+    #[Route('/api/tasks/{id}', methods: ['DELETE'])]
     public function delete($id, EntityManagerInterface $em): JsonResponse
     {
         $task = $em->getRepository(Task::class)->find($id);
